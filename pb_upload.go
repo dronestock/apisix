@@ -16,6 +16,7 @@ func (p *pb) upload(plugin *plugin) (err error) {
 	} else {
 		pr := new(protobufReq)
 		pr.Content = base64.StdEncoding.EncodeToString(content)
+		pr.Description = p.Description
 		req.SetBody(pr)
 	}
 	if nil != err {
