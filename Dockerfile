@@ -9,7 +9,7 @@ description="Drone持续集成系统Apisix网关插件，支持的功能有：1�
 
 
 # 复制文件
-COPY apsix /bin
+COPY apisix /bin
 
 
 RUN set -ex \
