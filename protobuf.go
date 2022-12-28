@@ -14,5 +14,11 @@ func (p *plugin) protobuf() (undo bool, err error) {
 		return
 	}
 
+	for _, _protobuf := range p.Protobufs {
+		if err = _protobuf.upload(p); nil != err {
+			return
+		}
+	}
+
 	return
 }
