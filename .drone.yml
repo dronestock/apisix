@@ -17,7 +17,7 @@ steps:
       - name: go
         path: /var/lib/go
     settings:
-      output: apifix
+      output: apisix
 
   - name: 发布
     image: ccr.ccs.tencentyun.com/dronestock/docker
