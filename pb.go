@@ -10,12 +10,16 @@ type pb struct {
 }
 
 func (p *plugin) pb() (undo bool, err error) {
-	if undo = !*p.Pb.Enabled || 0 == len(p.Pbs); undo {
+	if undo = 0 == len(p.Pbs); undo {
 		return
 	}
 
 	for _, _pb := range p.Pbs {
-		if err = _pb.upload(p); nil != err {
+		if nil != _pb.Enabled && *_pb.Enabled {
+			err = _pb.upload(p)
+		}
+
+		if nil != err {
 			return
 		}
 	}
