@@ -24,6 +24,7 @@ func (p *pb) upload(plugin *plugin) (err error) {
 
 	rsp := new(protobufRsp)
 	url := fmt.Sprintf("%s/apisix/admin/protos/%s", plugin.Endpoint, p.Id)
+	req.SetHeader("X-API-KEY", plugin.ApiKey)
 	if hr, he := req.SetResult(rsp).Put(url); nil != he {
 		err = he
 	} else if hr.IsError() {
