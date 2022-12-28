@@ -23,7 +23,7 @@ Drone插件模板，要编写Drone插件，可以从此模板开始创建项目
     secret_key: xxx
 ```
 
-更多使用教程，请参考[文档](https://www.dronestock.tech/plugin/cos)
+更多使用教程，请参考[文档](https://www.dronestock.tech/plugin/apisix)
 
 ## 交流
 

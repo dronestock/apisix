@@ -9,9 +9,15 @@ import (
 type plugin struct {
 	drone.Base
 
-	// TODO 配置项，可以使用结构体
-	// 如何配置选项请参数：https://github.com/dronestock/drone
-	Todo string `default:"${PLUGIN_TODO=${TODO=默认值}}" validate:"required"`
+	// 端点
+	Endpoint string `default:"{ENDPOINT}}" validate:"required"`
+	// 接口密钥
+	ApiKey string `default:"${API_KEY}" validate:"required"`
+
+	// Protobuf文件上传
+	Protobuf *protobuf `default:"PROTOBUF"`
+	// Protobuf文件上传列表
+	Protobufs []*protobuf `default:"PROTOBUFS"`
 }
 
 func newPlugin() drone.Plugin {
@@ -22,16 +28,14 @@ func (p *plugin) Config() drone.Config {
 	return p
 }
 
-// Steps TODO 返回所有要执行步骤
 func (p *plugin) Steps() drone.Steps {
 	return drone.Steps{
-		drone.NewStep(p.todo, drone.Name(`启动守护进程`)),
+		drone.NewStep(p.protobuf, drone.Name(`启动守护进程`)),
 	}
 }
 
-// Fields TODO 这儿返回所有的参数，上层在执行步骤时，会将参数在日志中打印
-func (p *plugin) Fields() gox.Fields {
-	return gox.Fields{
-		field.String(`todo`, p.Todo),
+func (p *plugin) Fields() gox.Fields[any] {
+	return gox.Fields[any]{
+		field.New(`endpoint`, p.Endpoint),
 	}
 }
