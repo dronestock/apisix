@@ -36,7 +36,7 @@ func (p *pb) upload(plugin *plugin) (err error) {
 			field.New("body", string(hr.Body())),
 		)
 	} else {
-		plugin.Debug("上传Protobuf文件到Apisix成功", field.New("rsp", rsp))
+		plugin.Info("上传Protobuf文件到Apisix成功", field.New("rsp", rsp))
 	}
 
 	return

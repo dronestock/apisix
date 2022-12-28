@@ -41,7 +41,7 @@ func (p *plugin) Setup() (unset bool, err error) {
 
 func (p *plugin) Steps() drone.Steps {
 	return drone.Steps{
-		drone.NewStep(p.pb, drone.Name(`启动守护进程`)),
+		drone.NewStep(p.pb, drone.Name(`Protobuf`)),
 	}
 }
 
