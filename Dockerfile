@@ -22,7 +22,7 @@ RUN set -ex \
     \
     \
     # 增加执行权限
-    && chmod +x /bin/plugin \
+    && chmod +x /bin/apisix \
     \
     \
     \
