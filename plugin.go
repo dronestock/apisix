@@ -10,14 +10,14 @@ type plugin struct {
 	drone.Base
 
 	// 端点
-	Endpoint string `default:"{ENDPOINT}}" validate:"required"`
+	Endpoint string `default:"${ENDPOINT}" validate:"required"`
 	// 接口密钥
 	ApiKey string `default:"${API_KEY}" validate:"required"`
 
 	// Protobuf文件上传
-	Protobuf *protobuf `default:"PROTOBUF"`
+	Protobuf *protobuf `default:"${PROTOBUF}"`
 	// Protobuf文件上传列表
-	Protobufs []*protobuf `default:"PROTOBUFS"`
+	Protobufs []*protobuf `default:"${PROTOBUFS}"`
 }
 
 func newPlugin() drone.Plugin {
