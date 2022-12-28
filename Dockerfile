@@ -5,12 +5,11 @@ LABEL author="storezhang<华寅>" \
 email="storezhang@gmail.com" \
 qq="160290688" \
 wechat="storezhang" \
-# TODO 增加描述信息
-description="Drone持续集成Docker插件，增加以下功能：1、xxx；2、xxx"
+description="Drone持续集成系统Apisix网关插件，支持的功能有：1、Protobuf文件上传"
 
 
 # 复制文件
-COPY plugin /bin
+COPY apsix /bin
 
 
 RUN set -ex \
