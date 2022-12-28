@@ -15,9 +15,9 @@ type plugin struct {
 	ApiKey string `default:"${API_KEY}" validate:"required"`
 
 	// Protobuf文件上传
-	Protobuf *protobuf `default:"${PROTOBUF}"`
+	Pb *pb `default:"${PB}"`
 	// Protobuf文件上传列表
-	Protobufs []*protobuf `default:"${PROTOBUFS}"`
+	Pbs []*pb `default:"${PBS}"`
 }
 
 func newPlugin() drone.Plugin {
@@ -29,11 +29,11 @@ func (p *plugin) Config() drone.Config {
 }
 
 func (p *plugin) Setup() (unset bool, err error) {
-	if nil != p.Protobuf {
-		if nil == p.Protobuf {
-			p.Protobufs = make([]*protobuf, 0, 1)
+	if nil != p.Pb {
+		if nil == p.Pb {
+			p.Pbs = make([]*pb, 0, 1)
 		}
-		p.Protobufs = append(p.Protobufs, p.Protobuf)
+		p.Pbs = append(p.Pbs, p.Pb)
 	}
 
 	return
@@ -41,7 +41,7 @@ func (p *plugin) Setup() (unset bool, err error) {
 
 func (p *plugin) Steps() drone.Steps {
 	return drone.Steps{
-		drone.NewStep(p.protobuf, drone.Name(`启动守护进程`)),
+		drone.NewStep(p.pb, drone.Name(`启动守护进程`)),
 	}
 }
 

@@ -9,7 +9,7 @@ import (
 	"github.com/goexl/gox/field"
 )
 
-func (p *protobuf) upload(plugin *plugin) (err error) {
+func (p *pb) upload(plugin *plugin) (err error) {
 	req := plugin.Http()
 	if content, re := os.ReadFile(p.Source); nil != re {
 		err = re
