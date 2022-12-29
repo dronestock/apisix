@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/goexl/exc"
 	"github.com/goexl/gox/field"
@@ -24,7 +25,7 @@ func (p *pb) upload(plugin *plugin) (err error) {
 	}
 
 	rsp := new(protobufRsp)
-	url := fmt.Sprintf("%s/apisix/admin/protos/%s", plugin.Endpoint, p.Id)
+	url := fmt.Sprintf("%s/apisix/admin/protos/%s", strings.TrimSuffix(plugin.Endpoint, "/"), p.Id)
 	req.SetHeader("X-API-KEY", plugin.ApiKey)
 	if hr, he := req.SetResult(rsp).Put(url); nil != he {
 		err = he
@@ -33,7 +34,7 @@ func (p *pb) upload(plugin *plugin) (err error) {
 			"Apisix返回错误",
 			field.New("url", hr.Request.URL),
 			field.New("code", hr.StatusCode()),
-			field.New("body", string(hr.Body())),
+			field.New("body", hr.Body()),
 		)
 	} else {
 		plugin.Info("上传Protobuf文件到Apisix成功", field.New("rsp", rsp))
