@@ -41,12 +41,12 @@ func (p *plugin) Setup() (unset bool, err error) {
 
 func (p *plugin) Steps() drone.Steps {
 	return drone.Steps{
-		drone.NewStep(p.pb, drone.Name(`Protobuf`)),
+		drone.NewStep(newProtobufStep(p)).Name("Protobuf").Build(),
 	}
 }
 
 func (p *plugin) Fields() gox.Fields[any] {
 	return gox.Fields[any]{
-		field.New(`endpoint`, p.Endpoint),
+		field.New("endpoint", p.Endpoint),
 	}
 }
