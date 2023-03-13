@@ -3,7 +3,7 @@ module github.com/dronestock/apisix
 go 1.19
 
 require (
-	github.com/dronestock/drone v0.9.0
+	github.com/dronestock/drone v0.9.1
 	github.com/goexl/exc v0.0.5
 	github.com/goexl/gox v0.2.8
 )
