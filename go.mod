@@ -1,11 +1,11 @@
 module github.com/dronestock/apisix
 
-go 1.23
+go 1.27
 
 require (
 	github.com/dronestock/drone v1.2.6
 	github.com/goexl/exc v0.0.5
-	github.com/goexl/gox v1.9.2
+	github.com/goexl/gox v1.9.3
 )
 
 require (
